@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Sparkle: where updates are announced, and the key that signs them. -->
+	<key>SUFeedURL</key>
+	<string>https://github.com/barry-napier/copyvisible/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>fXt0dEy2AFAUvkVvCnHtJIbnbMG6urAk7fKorBM/eFI=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+</dict>
+</plist>

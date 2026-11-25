@@ -1,0 +1,70 @@
+name: CopyVisible
+options:
+  bundleIdPrefix: com.barrynapier
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    exactVersion: 2.10.1
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  CopyVisible:
+    type: application
+    platform: macOS
+    sources:
+      - path: CopyVisible
+    dependencies:
+      - package: Sparkle
+    configFiles:
+      Debug: Config/CopyVisible.xcconfig
+      Release: Config/CopyVisible.xcconfig
+    scheme:
+      testTargets:
+        - CopyVisibleTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.barrynapier.copyvisible
+        PRODUCT_NAME: CopyVisible
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: Config/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Config/CopyVisible.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_CFBundleDisplayName: CopyVisible
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription: CopyVisible adds events you choose from text you captured.
+        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: CopyVisible adds reminders you choose from text you captured.
+        ENABLE_APP_SANDBOX: NO
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "Apple Development"
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+      configs:
+        Release:
+          CODE_SIGN_IDENTITY: "Developer ID Application"
+          OTHER_CODE_SIGN_FLAGS: "--timestamp"
+  # Unit tests for the parts that do not need the screen: reading, sorting
+  # and formatting. They compile those files directly, so no app launches.
+  CopyVisibleTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+      - path: CopyVisible/Reading
+      - path: CopyVisible/Output/PasteFormat.swift
+    configFiles:
+      Debug: Config/CopyVisible.xcconfig
+      Release: Config/CopyVisible.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.barrynapier.copyvisible.tests
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "Apple Development"

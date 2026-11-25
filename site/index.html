@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CopyVisible · Copy anything you can see</title>
+<meta name="description" content="A free, open-source Mac app. Drag over any part of the screen and the text goes to your clipboard. Apple’s AI on your Mac can explain it, sum it up or translate it.">
+<link rel="canonical" href="https://copyvisible.app/">
+<meta property="og:title" content="CopyVisible">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://copyvisible.app/">
+<meta property="og:image" content="https://copyvisible.app/assets/icon.png">
+<meta property="og:description" content="Copy anything you can see. Free, open source, and private: it all runs on your Mac.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+<script>
+  try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<script src="main.js" defer></script>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <a class="home" href="#top" aria-label="CopyVisible, top of page"><img src="assets/icon.png" width="28" height="28" alt=""></a>
+  <a class="wide" href="#features">Features</a>
+  <a class="wide" href="#privacy">Privacy</a>
+  <a href="#install">Install</a>
+  <button id="theme" type="button" aria-label="Switch between light and dark">◐</button>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <h1>Copy anything<br><span class="seen">you can see.</span></h1>
+    <div class="pitch">
+      <p>Press <kbd>⇧⌘2</kbd> and drag over any part of the screen. The text in it goes to your clipboard. Then Apple’s AI, on your Mac, can explain it, sum it up or translate it.</p>
+      <div class="actions">
+        <a class="download" href="https://github.com/barry-napier/copyvisible/releases/latest/download/CopyVisible.dmg">Download for Mac</a>
+        <a class="source" href="https://github.com/barry-napier/copyvisible">Read the code</a>
+      </div>
+      <p class="needs">Free and open source. No account. Needs macOS 26 and Apple silicon. Smart actions need Apple Intelligence.</p>
+    </div>
+  </header>
+
+  <section class="stage" id="stage" aria-label="CopyVisible demo" data-phase="idle">
+    <div class="screen" id="screen">
+      <div class="player" aria-hidden="true">
+        <div class="titlebar"><i></i><i></i><i></i><span>Conference talk · 14:32</span></div>
+        <pre class="video"><code><b>async function</b> loadUser(id) {
+  <b>const</b> res = <b>await</b> fetch(`/api/users/${id}`)
+  <b>if</b> (!res.ok) <b>throw new</b> Error(res.statusText)
+  <b>return</b> res.json()
+}</code></pre>
+        <div class="scrub"><span></span></div>
+      </div>
+      <div class="box" id="box" hidden><span class="size" id="size"></span></div>
+      <p class="hint" id="hint">Drag over the code. It’s a video, so you can’t select it.</p>
+    </div>
+    <figure class="panel" id="panel" aria-hidden="true">
+      <img class="light" src="assets/shots/panel-code-light.webp" width="440" height="560" alt="">
+      <img class="dark" src="assets/shots/panel-code-dark.webp" width="440" height="560" alt="">
+    </figure>
+    <span class="copied" id="copied" role="status">Copied 24 words</span>
+    <button class="replay" id="replay" type="button">Play again</button>
+  </section>
+  <p class="caption">The panel is CopyVisible’s real window. The answer came from Apple’s model on a Mac.</p>
+
+  <section id="features" class="section">
+    <div class="section-head">
+      <h2>Grab it. Then do something with it.</h2>
+      <p>CopyVisible reads text with Apple’s own tools, then knows what it caught.</p>
+    </div>
+
+    <h3 class="group">Capture</h3>
+    <div class="grid">
+      <article><span class="ic">⌗</span><h4>Drag a box</h4><p>Any app, video, picture or PDF. Press <kbd>⇧⌘2</kbd> and drag. You can change the shortcut.</p></article>
+      <article><span class="ic">▣</span><h4>Click a window</h4><p>Click instead of dragging to take a whole window, even the parts you can’t see.</p></article>
+      <article><span class="ic">↻</span><h4>Same box again</h4><p>One key reads the last box again. Made for slides and pages you flip through.</p></article>
+      <article><span class="ic">◉</span><h4>Watch a box</h4><p>Pick an area, like video subtitles. Each new line is added and copied as it shows up.</p></article>
+      <article><span class="ic">⇣</span><h4>Drop a picture</h4><p>Drag a picture or PDF onto the menu bar icon. Or read a picture that is on the clipboard.</p></article>
+      <article><span class="ic">¶</span><h4>Join broken lines</h4><p>Sentences that wrapped across lines come back as one. Code keeps its lines and spacing.</p></article>
+    </div>
+
+    <h3 class="group">Knows what it caught</h3>
+    <div class="kinds">
+      <span><b>Code</b> keeps its indents</span>
+      <span><b>Logs</b> ask “what went wrong?”</span>
+      <span><b>Tables</b> paste as cells</span>
+      <span><b>Contacts</b> go to Contacts</span>
+      <span><b>QR codes</b> become links</span>
+      <span><b>Dates</b> go to Calendar</span>
+      <span><b>Links, emails, phones</b> become buttons</span>
+    </div>
+
+    <h3 class="group">Smart actions, on your Mac</h3>
+    <div class="grid">
+      <article><span class="ic">✦</span><h4>Explain and sum up</h4><p>What does this code do? What does this paragraph mean? Short answers in plain words.</p></article>
+      <article><span class="ic">✂</span><h4>Shorten and fix</h4><p>Make it concise, or fix the reading mistakes, like O for 0.</p></article>
+      <article><span class="ic">⇄</span><h4>Translate</h4><p>Into the language you pick. Or change code into another language.</p></article>
+      <article><span class="ic">🐞</span><h4>Find the bug</h4><p>Checks code for real problems. It says so when it finds none.</p></article>
+      <article><span class="ic">?</span><h4>Ask about it</h4><p>Type a question about what you captured, then keep asking.</p></article>
+      <article><span class="ic">♪</span><h4>Read aloud</h4><p>Your Mac speaks the text or the answer.</p></article>
+    </div>
+
+    <h3 class="group">And the rest</h3>
+    <div class="grid">
+      <article><span class="ic">{}</span><h4>Copy as</h4><p>Plain, Markdown, CSV, JSON or snake_case.</p></article>
+      <article><span class="ic">◷</span><h4>History</h4><p>Search past captures by words, app or date. Keep them 30 days, a year, or forever.</p></article>
+      <article><span class="ic">⌘</span><h4>Shortcuts app</h4><p>Capture, read pictures and run smart actions in your own automations.</p></article>
+    </div>
+  </section>
+
+  <section id="privacy" class="section privacy">
+    <h2>It reads your screen.<br><em>So it never leaves your Mac.</em></h2>
+    <dl>
+      <div><dt>Who reads the text?</dt><dd>Apple’s Vision framework, on your Mac. Smart actions use Apple’s on-device model.</dd></div>
+      <div><dt>Does it use the internet?</dt><dd>Only to check for updates and download them. No account, no tracking.</dd></div>
+      <div><dt>When does it look at the screen?</dt><dd>Only when you press the shortcut, and only at the part you choose. macOS calls this permission Screen Recording. It never records video.</dd></div>
+      <div><dt>What does it save?</dt><dd>History, on your Mac only. You choose how long to keep it, or switch it off. Delete all really deletes it.</dd></div>
+      <div><dt>Can it get things wrong?</dt><dd>Yes. Reading text from a picture is not perfect, and neither is AI. Check before you send.</dd></div>
+      <div><dt>Can I check all this?</dt><dd>Yes. The code is open, under the MIT License.</dd></div>
+    </dl>
+  </section>
+
+  <section id="install" class="section install">
+    <h2>Stop retyping what’s on your screen.</h2>
+    <ol>
+      <li>Click <b>Download for Mac</b>.</li>
+      <li>Open <b>CopyVisible.dmg</b>, then drag CopyVisible into Applications.</li>
+      <li>Open it and switch on Screen Recording when it asks.</li>
+    </ol>
+    <a class="download" href="https://github.com/barry-napier/copyvisible/releases/latest/download/CopyVisible.dmg">Download for Mac</a>
+    <p class="needs">Free and open source. Checked by Apple for malware. Updates itself.</p>
+  </section>
+</main>
+
+<footer>
+  <span>CopyVisible · Made by Barry Napier</span>
+  <a href="https://github.com/barry-napier/copyvisible">Source code</a>
+  <a href="https://github.com/barry-napier/copyvisible/blob/main/LICENSE">MIT License</a>
+  <a href="https://github.com/barry-napier/copyvisible/issues">Report a problem</a>
+</footer>
+
+</body>
+</html>
