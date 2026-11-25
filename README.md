@@ -8,7 +8,7 @@ your Mac, can explain it, sum it up, shorten it or translate it.
 
 Free and open source. No account, no server, no tracking.
 
-**[copyvisible.app](https://copyvisible.app)**
+**[copyvisible.bnapier.dev](https://copyvisible.bnapier.dev)**
 
 ## Install
 
@@ -123,7 +123,7 @@ Mac. The workflow file lists the secrets it needs.
 
 ### Website
 
-`site/` is the page at copyvisible.app. It is plain HTML, CSS and JavaScript.
+`site/` is the page at copyvisible.bnapier.dev. It is plain HTML, CSS and JavaScript.
 
 ## License
 
